@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+OS="$(uname -s)"
+case "${OS}" in
+  Darwin*)    machine=macos;;
+  Linux*)     machine=linux;;
+esac
+
+if [ ${machine} ]; then
+  exec "./prequisite/${machine}/install.sh"
+else
+  echo "Unknown or not supported operating system. Exiting..."
+  exit 1
+fi
